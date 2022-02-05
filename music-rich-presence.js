@@ -48,6 +48,7 @@ async function updateRichPresence(client) {
       (error, stdout, stderr) => {
         [artist, album, title] = stdout.split("~");
         config.Details = `Now playing: ${title} - ${artist}`;
+        config.LargeImageText = `Now playing: ${title} - ${artist}`;
         config.State = `Album: ${album}`;
 
         setPresence();
