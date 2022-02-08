@@ -25,6 +25,7 @@ if [ "$1" = "install"  ]; then
     w3m lynx # both w3m and lynx are cool terminal browsers B)
     atom apm # best text editor
     nodejs npm # programming essentials
+    gimp # image manipulation is a great tool to have
     )
 
     for package in ${packages[@]}; do
