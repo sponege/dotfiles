@@ -26,6 +26,7 @@ if [ "$1" = "install"  ]; then
     atom apm # best text editor
     nodejs npm # programming essentials
     gimp # image manipulation is a great tool to have
+    peek # for recording GIFs
     )
 
     for package in ${packages[@]}; do
@@ -59,15 +60,23 @@ wget -q https://github.com/BetterDiscord/Installer/releases/latest/download/Bett
 chmod +x ./BetterDiscord-Linux.AppImage # make it executable
 echo "Done."
 
+## Install Lowpolys sexy Nord Theme
 cd /home/$user
 mkdir -p .config
 cd .config
 mkdir -p BetterDiscord
 cd BetterDiscord
+mkdir -p themes
+cd themes
+cp $dotfiles/lowpoly.theme.css .
+
+## Download sponeges favorite plugins :)
+cd /home/$user/.config/BetterDiscord
+
 mkdir -p plugins
 cd plugins
 echo "Downloading all plugins..."
-plugins=(7 11 29 60 61 63 64 65 66 67 68 69 70 71 77 78 80 81 85 88 91 92 94 95 97 98 99 100 103 104 107 109 137 138 139 159 160 162 164 179 181 184 192 193 196 200 220 228 238 240 274 284 291 293 317 337 340 350 351 352 361 364 377 382 383 398 401 407 441 471 500 509 520 523 525 539)
+plugins=(193 361 220 200 9)
 for id in ${plugins[@]}; do # loop through all plugins that sponege hand-picked himself
   echo "Downloading plugin with id $id..."
   wget -q --content-disposition --no-http-keep-alive "https://betterdiscord.app/Download?id=$id" # download all plugins
