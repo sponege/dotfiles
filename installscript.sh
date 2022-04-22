@@ -17,6 +17,9 @@ echo "Logged in as $user"
 # sudo -s <<EOF # we now have username of current user, now change to root user
 
 if [ "$1" = "install"  ]; then
+  ## install starship
+  curl -sS https://starship.rs/install.sh | sh
+
   if [ -f /bin/pacman ]; then
     sudo pacman -Syu # update
 
