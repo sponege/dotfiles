@@ -54,12 +54,6 @@ if [ "$1" = "install"  ]; then
   fi
 fi
 
-cd /home/$user/Downloads
-echo "Downloading BetterDiscord installer..."
-wget -q https://github.com/BetterDiscord/Installer/releases/latest/download/BetterDiscord-Linux.AppImage # download BetterDiscord installer
-chmod +x ./BetterDiscord-Linux.AppImage # make it executable
-echo "Done."
-
 ## Install Lowpolys sexy Nord Theme
 cd /home/$user
 mkdir -p .config
@@ -70,8 +64,18 @@ mkdir -p themes
 cd themes
 cp $dotfiles/lowpoly.theme.css .
 
+## Install Lowpolys i3 theme + background of my choice
+cp $dotfiles/i3/* ~/.config/i3
+cp picom.conf ~/.config
+
 ## Download sponeges favorite plugins :)
 cd /home/$user/.config/BetterDiscord
+
+cd /home/$user/Downloads
+echo "Downloading BetterDiscord installer..."
+wget -q https://github.com/BetterDiscord/Installer/releases/latest/download/BetterDiscord-Linux.AppImage # download BetterDiscord installer
+chmod +x ./BetterDiscord-Linux.AppImage # make it executable
+echo "Done."
 
 mkdir -p plugins
 cd plugins

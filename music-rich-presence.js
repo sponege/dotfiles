@@ -47,9 +47,9 @@ async function updateRichPresence(client) {
       `playerctl metadata --format "{{artist}}~{{album}}~{{title}}"`,
       (error, stdout, stderr) => {
         [artist, album, title] = stdout.split("~");
-        config.Details = `Now playing: ${title} - ${artist}`;
+        config.Details = `Now playing: ${title}`;
         config.LargeImageText = `Now playing: ${title} - ${artist}`;
-        config.State = `Album: ${album}`;
+        config.State = `Artist: ${artist}`;
 
         setPresence();
       }
