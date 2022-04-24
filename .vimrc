@@ -23,7 +23,10 @@ Plug 'itchyny/lightline.vim'
 " Rainbow-colored Parenthesis
 Plug 'kien/rainbow_parentheses.vim'
 " Sublime Text Theme
-Plug 'ErichDonGubler/vim-sublime-monokai'
+" Plug 'ErichDonGubler/vim-sublime-monokai'
+" LennyPhoenix's Theme
+Plug 'LennyPhoenix/sweet_dracula_vim', {'as': 'dracula-theme'}
+hi! link  VertSplit DraculaCyan
 " Formatting
 Plug 'pangloss/vim-javascript'
 " Discord Rich Presence
@@ -64,7 +67,7 @@ filetype plugin indent on
 
 " Enable Themeing
 syntax on
-colorscheme sublimemonokai
+" colorscheme sublimemonokai
 
 " syntax enable
 " set termguicolors
