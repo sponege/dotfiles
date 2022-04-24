@@ -23,17 +23,19 @@ if [ "$1" = "install"  ]; then
   if [ -f /bin/pacman ]; then
     sudo pacman -Syu # update
 
+    sudo pacman -S paru # pacman but with AUR
+
     packages=(
     discord # for chatting
     w3m lynx # both w3m and lynx are cool terminal browsers B)
     atom apm # best text editor
-    nodejs npm # programming essentials
+    nodejs npm # languages I find to be fast and easy to use
     gimp # image manipulation is a great tool to have
-    peek # for recording GIFs
+    cava # console-based audio visualizer
     )
 
     for package in ${packages[@]}; do
-      sudo pacman -S $package --needed # install all packages, if already installed dont reinstall
+      sudo paru -S $package --needed # install all packages, if already installed dont reinstall
     done
 
     packages=(
@@ -57,6 +59,7 @@ if [ "$1" = "install"  ]; then
   fi
 fi
 
+echo "Installing Lowpolys Discord Nord theme..."
 ## Install Lowpolys sexy Nord Theme
 cd /home/$user
 mkdir -p .config
@@ -67,9 +70,10 @@ mkdir -p themes
 cd themes
 cp $dotfiles/lowpoly.theme.css .
 
+echo "Installing Lowpolys i3 theme..."
 ## Install Lowpolys i3 theme + background of my choice
 cp $dotfiles/i3/* ~/.config/i3
-cp picom.conf ~/.config
+cp $dotfiles/picom.conf ~/.config
 
 ## Download sponeges favorite plugins :)
 cd /home/$user/.config/BetterDiscord
