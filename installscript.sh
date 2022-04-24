@@ -108,6 +108,8 @@ cp $dotfiles/lowpoly.theme.css .
 
 echo "Installing Lowpolys i3 theme..."
 ## Install Lowpolys i3 theme + background of my choice
+cd ~/.config
+mkdir -p i3
 cp $dotfiles/i3/* ~/.config/i3
 cp $dotfiles/picom.conf ~/.config
 
