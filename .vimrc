@@ -1,24 +1,32 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+packloadall
 
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin()
 " For Github, just author/repo
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = ['coc-prettier']
+" Prettify files on save
+let g:coc_user_config = {
+\ 'coc.preferences': {
+  \ 'formatOnSaveFiletypes': ['*']
+  \ }
+\ }
+
 " File Tree
-Plugin 'preservim/nerdtree'
+Plug 'preservim/nerdtree'
 " Sexy Bottom Bar
-Plugin 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim'
 " Rainbow-colored Parenthesis
-Plugin 'kien/rainbow_parentheses.vim'
+Plug 'kien/rainbow_parentheses.vim'
 " Sublime Text Theme
-Plugin 'ErichDonGubler/vim-sublime-monokai'
+Plug 'ErichDonGubler/vim-sublime-monokai'
 " Formatting
-Plugin 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
 " Discord Rich Presence
-Plugin 'vimsence/vimsence'
+Plug 'vimsence/vimsence'
 let g:vimsence_client_id = '439476230543245312'
 let g:vimsence_small_text = 'NeoVim'
 let g:vimsence_small_image = 'neovim'
@@ -28,12 +36,18 @@ let g:vimsence_file_explorer_text = 'In NERDTree'
 let g:vimsence_file_explorer_details = 'Looking for files'
 " let g:vimsence_custom_icons = {'filetype': 'iconname'}
 
-" Plugin 'neoclide/coc.nvim'
-" Plugin 'ayu-theme/ayu-vim'
-" Plugin 'dense-analysis/ale'
+" Prettify Code
+" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install --frozen-lockfile --production',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 
-Plugin 'editorconfig/editorconfig-vim'
-call vundle#end()
+" Plug 'neoclide/coc.nvim'
+" Plug 'ayu-theme/ayu-vim'
+" Plug 'dense-analysis/ale'
+
+Plug 'editorconfig/editorconfig-vim'
+call plug#end()
 filetype plugin indent on
 
 " Enable Themeing
@@ -72,8 +86,6 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 inoremap {<CR> {<CR>}<C-c>O
 inoremap [<CR> [<CR>]<C-c>O
 inoremap (<CR> (<CR>)<C-c>O
-
-
 
 " easily switch from insert mode to normal mode by jkjlkjasdflkjasldkjf-ing
 " https://stackoverflow.com/questions/9221769/whats-the-meaning-of-inoremap-in-vimrc

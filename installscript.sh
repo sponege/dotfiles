@@ -18,14 +18,6 @@ echo "Logged in as $user"
 
 if [ "$1" = "install"  ]; then
 
-  echo "Installing starship..."
-  ## install starship
-  curl -sS https://starship.rs/install.sh | sh
-
-  echo "Installing Vundle..."
-  ## install Vundle
-  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
   if [ -f /bin/pacman ]; then
     sudo pacman -Syu # update
 
@@ -63,6 +55,41 @@ if [ "$1" = "install"  ]; then
     sudo apt install ./discord*
 
   fi
+
+  # install prettier
+  npm install --save-dev --save-exact prettier
+  # support for vim
+  mkdir -p ~/.vim/pack/plugins/start
+git clone https://github.com/prettier/vim-prettier ~/.vim/pack/plugins/start/vim-prettier
+ 
+  echo "Installing starship..."
+  ## install starship
+  curl -sS https://starship.rs/install.sh | sh
+
+  echo "Installing Vundle..."
+  ## install Vundle
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+  ## Download sponeges favorite plugins :)
+  cd /home/$user/.config/BetterDiscord
+
+  cd /home/$user/Downloads
+  echo "Downloading BetterDiscord installer..."
+  wget -q https://github.com/BetterDiscord/Installer/releases/latest/download/BetterDiscord-Linux.AppImage # download BetterDiscord installer
+  chmod +x ./BetterDiscord-Linux.AppImage # make it executable
+  echo "Done."
+
+  mkdir -p plugins
+  cd plugins
+  echo "Downloading all plugins..."
+  plugins=(193 361 220 200 9)
+  for id in ${plugins[@]}; do # loop through all plugins that sponege hand-picked himself
+    echo "Downloading plugin with id $id..."
+    wget -q --content-disposition --no-http-keep-alive "https://betterdiscord.app/Download?id=$id" # download all plugins
+    # https://unix.stackexchange.com/questions/453465/wget-how-to-download-a-served-file-keeping-its-name
+    # https://unix.stackexchange.com/questions/410493/stop-wget-reusing-existing-connection
+  done
+  echo "Done."
 fi
 
 echo "Installing jordans/liams vimrc"
@@ -83,27 +110,6 @@ echo "Installing Lowpolys i3 theme..."
 ## Install Lowpolys i3 theme + background of my choice
 cp $dotfiles/i3/* ~/.config/i3
 cp $dotfiles/picom.conf ~/.config
-
-## Download sponeges favorite plugins :)
-cd /home/$user/.config/BetterDiscord
-
-cd /home/$user/Downloads
-echo "Downloading BetterDiscord installer..."
-wget -q https://github.com/BetterDiscord/Installer/releases/latest/download/BetterDiscord-Linux.AppImage # download BetterDiscord installer
-chmod +x ./BetterDiscord-Linux.AppImage # make it executable
-echo "Done."
-
-mkdir -p plugins
-cd plugins
-echo "Downloading all plugins..."
-plugins=(193 361 220 200 9)
-for id in ${plugins[@]}; do # loop through all plugins that sponege hand-picked himself
-  echo "Downloading plugin with id $id..."
-  wget -q --content-disposition --no-http-keep-alive "https://betterdiscord.app/Download?id=$id" # download all plugins
-  # https://unix.stackexchange.com/questions/453465/wget-how-to-download-a-served-file-keeping-its-name
-  # https://unix.stackexchange.com/questions/410493/stop-wget-reusing-existing-connection
-done
-echo "Done."
 
 cd $dotfiles
 # usermod --shell $oldshell $user # change shell to what it was previously
