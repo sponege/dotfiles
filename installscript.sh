@@ -33,7 +33,7 @@ if [ "$1" = "install"  ]; then
     )
 
     for package in ${packages[@]}; do
-      sudo paru -S $package --needed # install all packages, if already installed dont reinstall
+      paru -S $package --needed # install all packages, if already installed dont reinstall
     done
 
     packages=(

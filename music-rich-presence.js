@@ -59,6 +59,5 @@ async function updateRichPresence(client) {
 }
 
 client.on("ready", () => {
-  console.log("Your presence works now check your discord profile :D");
   updateRichPresence();
 });
