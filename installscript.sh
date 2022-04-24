@@ -17,8 +17,14 @@ echo "Logged in as $user"
 # sudo -s <<EOF # we now have username of current user, now change to root user
 
 if [ "$1" = "install"  ]; then
+
+  echo "Installing starship..."
   ## install starship
   curl -sS https://starship.rs/install.sh | sh
+
+  echo "Installing Vundle..."
+  ## install Vundle
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
   if [ -f /bin/pacman ]; then
     sudo pacman -Syu # update
@@ -58,6 +64,9 @@ if [ "$1" = "install"  ]; then
 
   fi
 fi
+
+echo "Installing jordans/liams vimrc"
+cp $dotfiles/.vimrc ~
 
 echo "Installing Lowpolys Discord Nord theme..."
 ## Install Lowpolys sexy Nord Theme
