@@ -30,6 +30,10 @@ if [ "$1" = "install"  ]; then
     nodejs npm # languages I find to be fast and easy to use
     gimp # image manipulation is a great tool to have
     cava # console-based audio visualizer
+    polybar # sexy status bar
+    gnome-terminal-transparency # because transparency is sick
+    minecraft-launcher # because XD
+    python3 python-pip # neovim uses python???
     )
 
     for package in ${packages[@]}; do
@@ -47,6 +51,7 @@ if [ "$1" = "install"  ]; then
       apm install $package # install all packages, if already installed dont reinstall
     done
 
+    python -m pip install neovim
 
   elif [ -f /bin/apt ]; then
 
@@ -61,7 +66,17 @@ if [ "$1" = "install"  ]; then
   # support for vim
   mkdir -p ~/.vim/pack/plugins/start
 git clone https://github.com/prettier/vim-prettier ~/.vim/pack/plugins/start/vim-prettier
- 
+
+  # Install vim-plug for Neovim (~/.local/share/nvim/site/autoload)
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+  
+  echo "Installing Nerd Fonts..."
+  sudo cp $dotfiles/FiraCode /usr/share/fonts
+  ## reset font cache
+  fc-cache -f -v
+
   echo "Installing starship..."
   ## install starship
   curl -sS https://starship.rs/install.sh | sh
@@ -90,10 +105,15 @@ git clone https://github.com/prettier/vim-prettier ~/.vim/pack/plugins/start/vim
     # https://unix.stackexchange.com/questions/410493/stop-wget-reusing-existing-connection
   done
   echo "Done."
+
+  ## custom shell prompt, aliases
+  cat $dotfiles/initbash.sh >> .bashrc
 fi
 
-echo "Installing jordans/liams vimrc"
+echo "Installing jordans/liams neovim configuration..."
 cp $dotfiles/.vimrc ~
+mkdir -p ~/.config/nvim
+cp $dotfiles/nvim/* ~/.config/nvim/* -r
 
 echo "Installing Lowpolys Discord Nord theme..."
 ## Install Lowpolys sexy Nord Theme
@@ -112,6 +132,9 @@ cd ~/.config
 mkdir -p i3
 cp $dotfiles/i3/* ~/.config/i3
 cp $dotfiles/picom.conf ~/.config
+
+echo "Installing jordans polybar config..."
+cp $dotfiles/polybar.ini ~/.config/polybar/config.ini
 
 cd $dotfiles
 # usermod --shell $oldshell $user # change shell to what it was previously

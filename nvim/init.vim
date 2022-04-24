@@ -1,9 +1,15 @@
-" this file is no longer actively maintained by sponege!
-" I use neovim now and it works great :)
-
 set nocompatible
-filetype off
+filetype on
+
+" line numbers
 set number
+
+" no line numbers in terminals
+au TermOpen * setlocal listchars= nonumber norelativenumber
+
+" focus terminal
+au TermOpen             *        startinsert
+au BufWinEnter,WinEnter term://* startinsert
 
 packloadall
 
@@ -20,7 +26,7 @@ let g:coc_user_config = {
 \ }
 
 " File Tree
-Plug 'preservim/nerdtree'
+" Plug 'preservim/nerdtree'
 " Sexy Bottom Bar
 Plug 'itchyny/lightline.vim'
 " Rainbow-colored Parenthesis
@@ -33,16 +39,7 @@ hi! link  VertSplit DraculaCyan
 " Formatting
 Plug 'pangloss/vim-javascript'
 " Discord Rich Presence
-Plug 'vimsence/vimsence'
-let g:vimsence_client_id = '439476230543245312'
-let g:vimsence_small_text = 'NeoVim'
-let g:vimsence_small_image = 'neovim'
-let g:vimsence_editing_details = 'Editing: {}'
-let g:vimsence_editing_state = 'Working on: {}'
-let g:vimsence_file_explorer_text = 'In NERDTree'
-let g:vimsence_file_explorer_details = 'Looking for files'
-" let g:vimsence_custom_icons = {'filetype': 'iconname'}
-
+Plug 'andweeb/presence.nvim'
 " Prettify Code
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
@@ -53,7 +50,7 @@ Plug 'prettier/vim-prettier', {
 " Plug 'ayu-theme/ayu-vim'
 " Plug 'dense-analysis/ale'
 
-Plug 'editorconfig/editorconfig-vim'
+" Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
 " sponeges script to install coc extensions: turned out to be unneccesary :/
@@ -94,9 +91,9 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 " NERDTree
-autocmd VimEnter * NERDTree | wincmd p
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-    \ quit | endif
+" autocmd VimEnter * NERDTree | wincmd p
+" autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+"     \ quit | endif
 
 
 " auto-expansion
@@ -139,11 +136,6 @@ set ttyfast
 
 " Enable mouse use in all modes
 set mouse=a
-
-" Set this to the name of your terminal that supports mouse codes.
-" Must be one of: xterm, xterm2, netterm, dec, jsbterm, pterm
-set ttymouse=xterm2
-" }}}
 
 " Custom cursor
 "   au VimEnter,InsertLeave * silent execute '!echo -ne "\e[2 q"' | redraw!
