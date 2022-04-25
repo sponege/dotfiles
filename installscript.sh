@@ -36,6 +36,7 @@ if [ "$1" = "install"  ]; then
     python3 python-pip # neovim uses python???
     i3-gaps # the WM I use :)
     btop htop # task managers :)
+    cmatrix # IM SUCH A HACKER GUYS
     )
 
     for package in ${packages[@]}; do

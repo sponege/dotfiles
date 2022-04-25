@@ -14,8 +14,11 @@ au BufWinEnter,WinEnter term://* startinsert
 " unfocus search with comma space
 nnoremap <silent> ,<space> :nohlsearch<CR>
 
-" copy to system clipboard
-nnoremap y "+y
+" copy to system clipboard (use the y command :)
+set clipboard^=unnamedplus
+
+" fun idea that didnt work feel free to remove :/
+" nnoremap y "+y
 
 packloadall
 
