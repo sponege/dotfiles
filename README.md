@@ -8,6 +8,8 @@ discord theme made by [lowpoly, another good friend of mine](https://github.com/
 
 do whatever you want with these configs I guess :)
 
+![my setup](./setup.png)
+
 # to install my configs
 
 1. install endeavourOS (GNOME + xfce + i3 is what I do :)
@@ -22,7 +24,7 @@ do whatever you want with these configs I guess :)
 
 boot into i3 (I would reccomend with debug log for all you tinkerers out there :)
 
-launch programs with Ctrl+D (type program name and hit enter, use arrow keys to select choices)
+launch programs with Ctrl+D
 
 read `./i3/config` for all the commands I use on the daily :)
 
