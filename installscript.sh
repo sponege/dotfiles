@@ -34,6 +34,7 @@ if [ "$1" = "install"  ]; then
     gnome-terminal-transparency # because transparency is sick
     minecraft-launcher # because XD
     python3 python-pip # neovim uses python???
+    i3-gaps # the WM I use :)
     )
 
     for package in ${packages[@]}; do
