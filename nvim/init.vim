@@ -11,6 +11,12 @@ au TermOpen * setlocal listchars= nonumber norelativenumber
 au TermOpen             *        startinsert
 au BufWinEnter,WinEnter term://* startinsert
 
+" unfocus search with comma space
+nnoremap <silent> ,<space> :nohlsearch<CR>
+
+" copy to system clipboard
+nnoremap y "+y
+
 packloadall
 
 call plug#begin()
