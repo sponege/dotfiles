@@ -35,6 +35,7 @@ if [ "$1" = "install"  ]; then
     minecraft-launcher # because XD
     python3 python-pip # neovim uses python???
     i3-gaps # the WM I use :)
+    btop htop # task managers :)
     )
 
     for package in ${packages[@]}; do
@@ -136,6 +137,10 @@ cp $dotfiles/picom.conf ~/.config
 
 echo "Installing jordans polybar config..."
 cp $dotfiles/polybar.ini ~/.config/polybar/config.ini
+
+echo "Setting up swap memory..."
+sudo cp $dotfiles/sysctl.conf /etc
+sudo sysctl vm.swappiness=100
 
 cd $dotfiles
 # usermod --shell $oldshell $user # change shell to what it was previously
