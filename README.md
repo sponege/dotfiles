@@ -22,7 +22,7 @@ do whatever you want with these configs I guess :)
 
 boot into i3 (I would reccomend with debug log for all you tinkerers out there :)
 
-launch programs with Ctrl+D
+launch programs with Ctrl+D (type program name and hit enter, use arrow keys to select choices)
 
 read `./i3/config` for all the commands I use on the daily :)
 
