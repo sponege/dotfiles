@@ -32,6 +32,7 @@ if [ "$1" = "install"  ]; then
     cava # console-based audio visualizer
     polybar # sexy status bar
     gnome-terminal-transparency # because transparency is sick
+    alacritty # gnome-terminal but multiplatform and no top or scroll bar :)
     minecraft-launcher # because XD
     python3 python-pip # neovim uses python???
     i3-gaps # the WM I use :)
@@ -111,7 +112,21 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 
   ## custom shell prompt, aliases
   cat $dotfiles/initbash.sh >> .bashrc
+
+  ## use 100% of swap memory
+  echo "Setting up swap memory..."
+  sudo cp $dotfiles/sysctl.conf /etc
+  sudo sysctl vm.swappiness=100
+
 fi
+
+echo "Installing alacritty config... (custom background + transparency)"
+cd ~
+mkdir -p .config
+cd .config
+mkdir -p alacritty
+cd alacritty
+cp $dotfiles/alacritty.yml .
 
 echo "Installing jordans/liams neovim configuration..."
 cp $dotfiles/.vimrc ~
@@ -120,9 +135,7 @@ cp $dotfiles/nvim/* ~/.config/nvim/* -r
 
 echo "Installing Lowpolys Discord Nord theme..."
 ## Install Lowpolys sexy Nord Theme
-cd /home/$user
-mkdir -p .config
-cd .config
+cd ~/.config
 mkdir -p BetterDiscord
 cd BetterDiscord
 mkdir -p themes
@@ -138,10 +151,6 @@ cp $dotfiles/picom.conf ~/.config
 
 echo "Installing jordans polybar config..."
 cp $dotfiles/polybar.ini ~/.config/polybar/config.ini
-
-echo "Setting up swap memory..."
-sudo cp $dotfiles/sysctl.conf /etc
-sudo sysctl vm.swappiness=100
 
 cd $dotfiles
 # usermod --shell $oldshell $user # change shell to what it was previously

@@ -15,7 +15,7 @@ floating_modifier $mod
 bindsym Print  exec gnome-screenshot -i
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+q kill
