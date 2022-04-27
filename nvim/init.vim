@@ -72,6 +72,9 @@ call plug#end()
 
 " command ExtensionInstall :call ExtensionInstall()
 
+" dont you just hate holding shift while writing a file
+command W :w
+
 filetype plugin indent on
 
 " Enable Themeing
