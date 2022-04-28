@@ -12,15 +12,22 @@ au TermOpen             *        startinsert
 au BufWinEnter,WinEnter term://* startinsert
 
 " unfocus search with comma space
-nnoremap <silent> ,<space> :nohlsearch<CR>
+nnoremap <silent> ,<space> :nohlsearch
 
 " copy to system clipboard (use the y command :)
 set clipboard^=unnamedplus
 
-" fun idea that didnt work feel free to remove :/
+" failed idea for clipboard that didnt work feel free to remove :/
 " nnoremap y "+y
 
+" dont you just hate holding shift while writing a file
+command W :w
+command Q :q
+
 packloadall
+
+" BetterCursor
+source better-cursor.vim
 
 call plug#begin()
 " For Github, just author/repo
@@ -72,8 +79,7 @@ call plug#end()
 
 " command ExtensionInstall :call ExtensionInstall()
 
-" dont you just hate holding shift while writing a file
-command W :w
+nnoremap <silent> ,<space>
 
 filetype plugin indent on
 
