@@ -27,7 +27,7 @@ command Q :q
 packloadall
 
 " BetterCursor
-source better-cursor.vim
+source ~/.config/nvim/better-cursor.vim
 
 call plug#begin()
 " For Github, just author/repo

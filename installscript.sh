@@ -131,7 +131,7 @@ cp $dotfiles/alacritty.yml .
 echo "Installing jordans/liams neovim configuration..."
 cp $dotfiles/.vimrc ~
 mkdir -p ~/.config/nvim
-cp $dotfiles/nvim/* ~/.config/nvim/* -r
+cp $dotfiles/nvim/* ~/.config/nvim/ -r
 
 echo "Installing Lowpolys Discord Nord theme..."
 ## Install Lowpolys sexy Nord Theme
