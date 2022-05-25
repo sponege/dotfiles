@@ -12,7 +12,7 @@ au TermOpen             *        startinsert
 au BufWinEnter,WinEnter term://* startinsert
 
 " unfocus search with comma space
-nnoremap <silent> ,<space> :nohlsearch
+nnoremap <silent> ,<space> :nohlsearch<CR>
 
 " copy to system clipboard (use the y command :)
 set clipboard^=unnamedplus
@@ -126,14 +126,12 @@ inoremap jk <ESC>
 inoremap jj <Esc>
 
 filetype plugin indent on
-" On pressing tab, insert 2 spaces
-set expandtab
 " show existing tab with 2 spaces width
 set tabstop=2
-set softtabstop=2
-" when indenting with '>', use 2 spaces width
 set shiftwidth=2
-" vim:fdm=marker
+set softtabstop=2
+
+
 
 " Editor basics {{{
 " Behave like Vim instead of Vi

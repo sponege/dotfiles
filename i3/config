@@ -12,7 +12,7 @@ font pango:monospace
 floating_modifier $mod
 
 # take a screenshot
-bindsym Print  exec gnome-screenshot -i
+bindsym Print exec flameshot gui
 
 # start a terminal
 bindsym $mod+Return exec alacritty

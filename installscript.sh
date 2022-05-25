@@ -38,6 +38,7 @@ if [ "$1" = "install"  ]; then
     i3-gaps # the WM I use :)
     btop htop # task managers :)
     cmatrix # IM SUCH A HACKER GUYS
+		flameshot # best screenshot tool in the whole goddamn world
     )
 
     for package in ${packages[@]}; do
