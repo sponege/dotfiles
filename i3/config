@@ -31,7 +31,7 @@ bindsym $mod+Ctrl+Up exec pactl -- set-sink-volume 0 +10%
 bindsym $mod+Ctrl+Down exec pactl -- set-sink-volume 0 -10%
 
 # set wallpaper
-exec --no-startup-id feh --bg-scale ~/.config/i3/endeavourOS-floppy.jpeg
+exec --no-startup-id feh --bg-scale ~/.config/i3/minecraft.png
 
 # polkit-gnome for pamac authentication
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
