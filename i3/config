@@ -37,7 +37,8 @@ exec --no-startup-id feh --bg-scale ~/.config/i3/minecraft.png
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # I'm guessing this is to start the internet
-exec --no-startup-id nm-applet
+# exec --no-startup-id nm-applet
+exec --no-startup-id systemctl start iwd
 
 # picom for window transparency (compositor)
 exec --no-startup-id picom

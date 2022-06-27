@@ -152,6 +152,8 @@ cp $dotfiles/picom.conf ~/.config
 
 echo "Installing jordans polybar config..."
 cp $dotfiles/polybar.ini ~/.config/polybar/config.ini
+killall polybar
+polybar &
 
 cd $dotfiles
 # usermod --shell $oldshell $user # change shell to what it was previously
