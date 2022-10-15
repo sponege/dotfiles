@@ -76,11 +76,6 @@ git clone https://github.com/prettier/vim-prettier ~/.vim/pack/plugins/start/vim
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-  
-  echo "Installing Nerd Fonts..."
-  sudo cp $dotfiles/FiraCode /usr/share/fonts
-  ## reset font cache
-  fc-cache -f -v
 
   echo "Installing starship..."
   ## install starship
@@ -121,6 +116,11 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 
 fi
 
+echo "Installing Nerd Fonts..."
+sudo cp $dotfiles/nerd-fonts/* /usr/share/fonts
+## reset font cache
+fc-cache -f -v
+
 echo "Installing alacritty config... (custom background + transparency)"
 cd ~
 mkdir -p .config
@@ -151,6 +151,7 @@ cp $dotfiles/i3/* ~/.config/i3
 cp $dotfiles/picom.conf ~/.config
 
 echo "Installing jordans polybar config..."
+mkdir -p ~/.config/polybar
 cp $dotfiles/polybar.ini ~/.config/polybar/config.ini
 killall polybar
 polybar &

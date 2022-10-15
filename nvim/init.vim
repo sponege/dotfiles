@@ -1,3 +1,21 @@
+" first off holy fuck we need an easy way to escape terminal windows
+" lets use ctrl+L
+tnoremap <silent> <C-l> <C-\><C-n>
+
+" lets also move around arrows with alt+<arrow keys>
+tnoremap <A-Left> <C-\><C-N><C-w>h
+tnoremap <A-Down> <C-\><C-N><C-w>j
+tnoremap <A-Up> <C-\><C-N><C-w>k
+tnoremap <A-Right> <C-\><C-N><C-w>l
+inoremap <A-Left> <C-\><C-N><C-w>h
+inoremap <A-Down> <C-\><C-N><C-w>j
+inoremap <A-Up> <C-\><C-N><C-w>k
+inoremap <A-Right> <C-\><C-N><C-w>l
+nnoremap <A-Left> <C-w>h
+nnoremap <A-Down> <C-w>j
+nnoremap <A-Up> <C-w>k
+nnoremap <A-Right> <C-w>l 
+
 set nocompatible
 filetype on
 
@@ -29,11 +47,16 @@ packloadall
 " BetterCursor
 source ~/.config/nvim/better-cursor.vim
 
+" Vim-Plug, install from github and then run :PlugInstall
 call plug#begin()
 " For Github, just author/repo
 
+" Copilot!
+Plug 'github/copilot.vim'
+
+" Prettier (in a sense)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-prettier', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-python', 'coc-pairs']
+let g:coc_global_extensions = ['coc-prettier', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-pairs']
 " Prettify files on save
 let g:coc_user_config = {
 \ 'coc.preferences': {
@@ -42,16 +65,22 @@ let g:coc_user_config = {
 \ }
 
 " File Tree
-" Plug 'preservim/nerdtree'
+Plug 'preservim/nerdtree'
+" this first one isnt useful to me but it might be to you
+nnoremap <silent> <leader>n :NERDTreeFocus<CR>
+" ctrl+n to toggle nerd tree, ctrl+f to open current file path in nerd tree
+nnoremap <silent> <C-n> :NERDTreeToggle<CR>
+nnoremap <silent> <C-f> :NERDTreeFind<CR>
+
 " Sexy Bottom Bar
 Plug 'itchyny/lightline.vim'
+
 " Rainbow-colored Parenthesis
 Plug 'kien/rainbow_parentheses.vim'
+
 " Sublime Text Theme
-" Plug 'ErichDonGubler/vim-sublime-monokai'
-" LennyPhoenix's Theme
-Plug 'LennyPhoenix/sweet_dracula_vim', {'as': 'dracula-theme'}
-hi! link  VertSplit DraculaCyan
+Plug 'ErichDonGubler/vim-sublime-monokai'
+
 " Formatting
 Plug 'pangloss/vim-javascript'
 " Discord Rich Presence
@@ -62,8 +91,7 @@ Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install --frozen-lockfile --production',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 
-" Plug 'neoclide/coc.nvim'
-" Plug 'ayu-theme/ayu-vim'
+Plug 'ayu-theme/ayu-vim'
 " Plug 'dense-analysis/ale'
 
 " Plug 'editorconfig/editorconfig-vim'
@@ -79,19 +107,36 @@ call plug#end()
 
 " command ExtensionInstall :call ExtensionInstall()
 
-nnoremap <silent> ,<space>
-
 filetype plugin indent on
 
 " Enable Themeing
 syntax on
-" colorscheme sublimemonokai
+colorscheme sublimemonokai
 
 " syntax enable
-" set termguicolors
-" let ayucolor="dark" " mirage looks cool too
-" colorscheme ayu 
-" set number
+set notermguicolors
+let ayucolor="dark" " mirage looks cool too
+colorscheme ayu 
+
+let g:scheme = 'ayu'
+
+function! ToggleTheme()
+	if &termguicolors
+		if g:scheme == 'ayu'
+			let g:scheme = 'sublimemonokai'
+			colorscheme sublimemonokai
+		else
+			let g:scheme = 'ayu'
+			colorscheme ayu
+			set notermguicolors
+		endif
+	else
+		set termguicolors
+	endif
+endfunction
+
+nnoremap <silent> <C-s> :call ToggleTheme()<CR>
+nnoremap <silent> <C-d> :call ToggleTheme()<CR>
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
@@ -108,30 +153,17 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
-" NERDTree
-" autocmd VimEnter * NERDTree | wincmd p
-" autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-"     \ quit | endif
-
-
-" auto-expansion
-" https://www.reddit.com/r/vim/comments/6h0dy7/which_autoclosing_plugin_do_you_use/
-" inoremap {<CR> {<CR>}<C-c>O
-" inoremap [<CR> [<CR>]<C-c>O
-" inoremap (<CR> (<CR>)<C-c>O
-
 " easily switch from insert mode to normal mode by jkjlkjasdflkjasldkjf-ing
 " https://stackoverflow.com/questions/9221769/whats-the-meaning-of-inoremap-in-vimrc
-inoremap jk <ESC>
-inoremap jj <Esc>
+" keyboard mashing is fun and easier than reaching to the escape key
+inoremap fj <ESC>
+inoremap jf <Esc>
 
 filetype plugin indent on
 " show existing tab with 2 spaces width
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
-
-
 
 " Editor basics {{{
 " Behave like Vim instead of Vi
@@ -174,7 +206,13 @@ set mouse=a
 " 5 -> blinking bar (xterm).
 " 6 -> steady bar (xterm).
 
+" Set the cursor shape to a line in insert mode.
+" this is for vim backwards capability
+
 " insert mode
 let &t_SI = "\e[5 q"
 " everywhere else
 let &t_EI = "\e[2 q"
+
+" message for myself :)
+" echo "Welcome, sponege."
