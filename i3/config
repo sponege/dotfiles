@@ -3,12 +3,19 @@
 # How to create a toast message:
 # exec notify-send --icon=gtk-info "im a catboy" "uwu uwu"
 
+# I'm learning japanese!
+exec setxkbmap -layout "us,jp" -variant "basic,kana"
+
+# I want to stay on top of notifications
+exec wired
+
+# Network manager applet
 exec --no-startup-id nm-applet
 
 # Meta Key
 set $mod Mod4
 
-font pango:monospace
+font pango:FiraCode Nerd Font
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -46,10 +53,10 @@ exec --no-startup-id systemctl start iwd
 exec --no-startup-id picom
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -58,10 +65,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -70,7 +77,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+g split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -142,10 +149,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 5 px or 5 ppt
@@ -195,8 +202,8 @@ default_border none
 default_floating_border none
 
 # Set inner/outer gaps
-gaps inner 12
-gaps outer 0
+# gaps inner 12
+# gaps outer 0
 
 # In the section for mode "resize" { I added this for fine tuning the size
 bindsym Shift+Left resize shrink width 1 px or 1 ppt

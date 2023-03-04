@@ -13,4 +13,5 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: FiraCode Nerd Font
+    # family: FiraCode Nerd Font
+    family: MesloLGS NF
