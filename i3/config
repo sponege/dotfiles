@@ -3,6 +3,15 @@
 # How to create a toast message:
 # exec notify-send --icon=gtk-info "im a catboy" "uwu uwu"
 
+# tab coloring is nice :)
+client.focused #ff80ab #e91e63 #ffffff #ff6090 #e91e63
+client.focused_inactive #ff6090 #f06292 #ffffff #ff80ab #f06292
+client.unfocused #333333 #222222 #888888 #292d2e #222222
+client.urgent #ff6090 #c2185b #ffffff #c2185b #c2185b
+client.placeholder #000000 #0c0c0c #ffffff #000000 #0c0c0c
+
+client.background       #ffffff
+
 # I'm learning japanese!
 exec setxkbmap -layout "us,jp" -variant "basic,kana"
 

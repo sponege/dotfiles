@@ -116,8 +116,8 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 
 fi
 
-echo "Installing Nerd Fonts..."
-sudo cp $dotfiles/nerd-fonts/* /usr/share/fonts
+# echo "Installing Nerd Fonts..."
+# sudo cp $dotfiles/nerd-fonts/* /usr/share/fonts
 ## reset font cache
 #fc-cache -f -v
 

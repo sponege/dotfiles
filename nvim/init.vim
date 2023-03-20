@@ -110,6 +110,9 @@ Plug 'ayu-theme/ayu-vim'
 " Plug 'dense-analysis/ale'
 
 " Plug 'editorconfig/editorconfig-vim'
+"
+" Hex colors
+Plug 'lilydjwg/colorizer'
 call plug#end()
 
 " sponeges script to install coc extensions: turned out to be unneccesary :/
