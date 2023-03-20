@@ -150,6 +150,8 @@ function! ToggleTheme()
 	endif
 endfunction
 
+call ToggleTheme()
+
 nnoremap <silent> <C-s> :call ToggleTheme()<CR>
 nnoremap <silent> <C-d> :call ToggleTheme()<CR>
 
