@@ -75,7 +75,7 @@ let g:coc_global_extensions = ['coc-prettier', 'coc-tsserver', 'coc-html', 'coc-
 " Prettify files on save
 let g:coc_user_config = {
 \ 'coc.preferences': {
-  \ 'formatOnSaveFiletypes': ['*']
+  \ 'formatOnSaveFiletypes': ['js', 'ts', 'html', 'css']
   \ }
 \ }
 
@@ -172,12 +172,6 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
-
-" easily switch from insert mode to normal mode by jkjlkjasdflkjasldkjf-ing
-" https://stackoverflow.com/questions/9221769/whats-the-meaning-of-inoremap-in-vimrc
-" keyboard mashing is fun and easier than reaching to the escape key
-inoremap fj <ESC>
-inoremap jf <Esc>
 
 filetype plugin indent on
 " show existing tab with 2 spaces width
