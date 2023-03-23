@@ -75,7 +75,7 @@ let g:coc_global_extensions = ['coc-prettier', 'coc-tsserver', 'coc-html', 'coc-
 " Prettify files on save
 let g:coc_user_config = {
 \ 'coc.preferences': {
-  \ 'formatOnSaveFiletypes': ['js', 'ts', 'html', 'css']
+  \ 'formatOnSaveFiletypes': ['javascript', 'typescript', 'html', 'css']
   \ }
 \ }
 
